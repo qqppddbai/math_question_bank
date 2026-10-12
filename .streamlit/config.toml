@@ -1,0 +1,21 @@
+# 本地单机题库工具的运行配置。
+# 这个文件放在项目根目录的 .streamlit/ 下，Streamlit 启动时自动读取。
+
+[server]
+# 关闭"文件变动自动重跑"。
+#
+# 这个应用是老师在本机用的单机工具，不需要热重载；而它自己每跑一次都会写文件
+# （__pycache__/*.pyc、data/ 下的数据库、上传的图片、导出的试卷），
+# 写完又被文件监听捕获 → 又触发一次重跑，来回 churn，体感就是页面持续卡顿。
+# 关掉之后，应用只在你操作时才跑。
+#
+# 如果以后改代码想看热重载，把这一行改成 "auto"，或临时启动时加 --server.fileWatcherType=auto。
+fileWatcherType = "none"
+
+[client]
+# 出错时显示完整堆栈，方便把报错原样贴出来排查。
+showErrorDetails = true
+
+[theme]
+# 保持默认浅色外观。
+base = "light"
